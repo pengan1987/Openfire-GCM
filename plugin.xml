@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin>
+   <class>de.meisterfuu.openfire.gcm.GcmPlugin</class>
+   <name>GCM Helper</name>
+   <description>Helper plugin to integrate your external gcm service</description>
+   <author>Florian Kimmann</author>
+   <version>1.0.0</version>
+   <date>27/03/2014</date>
+   <minServerVersion>3.9.0</minServerVersion>
+
+   <adminconsole>
+      <tab id="tab-server">
+         <sidebar id="sidebar-server-settings">
+            <item id="gcmh-form" name="GCM Settings" url="gcmh-form.jsp" description="Settings for GCM Helper" />
+         </sidebar>
+      </tab>
+   </adminconsole>
+</plugin>
