@@ -11,7 +11,7 @@ Binary JAR File: https://github.com/meisterfuu/Openfire-GCM/blob/master/gcmh.jar
 Known bugs
 ============
 
-"Fire GCM event only if target user has no available mobile(!) ressource." is not working.
+"Fire GCM event only if target user has no available ressource." is not working.
 
 
 
