@@ -11,7 +11,7 @@ Binary JAR File: https://github.com/meisterfuu/Openfire-GCM/blob/master/gcmh.jar
 Known bugs
 ============
 
-"Fire GCM event only if target user has no available ressource." is not working.
+"Fire GCM event only if target user has no available ressource." seems to work now, but no further testing than a few messagen with 2 accounts at the moment!
 
 
 
