@@ -5,7 +5,7 @@ GCM Plugin for Openfire
 
 
 Binary JAR File: https://github.com/meisterfuu/Openfire-GCM/blob/master/gcmh.jar?raw=true
-
+You can test/debug the plugin with "https://posttestserver.com/post.php" oder similar services if you don't already have your own webservice up and running.
 
 
 Known bugs
