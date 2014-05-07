@@ -18,4 +18,4 @@ Known bugs
 Todo
 ============
 
-Add mode that sends gcm if there is no mobile ressource online. (Identified by ressource/messenger)
+Add mode that sends gcm if there is no mobile ressource online. (Identified by ressource - Regex match on the ressource)
