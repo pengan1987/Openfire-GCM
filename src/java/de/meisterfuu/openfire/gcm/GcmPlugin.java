@@ -39,6 +39,7 @@ public class GcmPlugin implements Plugin, PacketInterceptor {
 	private static final String URL = "plugin.gcmh.url";
 	private static final String MODE = "plugin.gcmh.mode";
 	private static final String DEBUG = "plugin.gcmh.debug";
+	private static final String API_KEY = "plugin.gcmh.apikey";
 
 	public static final String MODE_ALL = "1";
 	public static final String MODE_OFFLINE = "2";
@@ -171,6 +172,8 @@ public class GcmPlugin implements Plugin, PacketInterceptor {
 			if(mDebug){
 				String x = Request
 				.Post(mURL)
+				.addHeader("Content-Type", "application/json")
+				.addHeader("Authorization", "key="+mApiKey)
 //				.bodyForm(Form.form().add("data", mGson.toJson(temp)).build())
 				.bodyString(mGson.toJson(temp), ContentType.APPLICATION_JSON)
 				.execute()
@@ -179,6 +182,8 @@ public class GcmPlugin implements Plugin, PacketInterceptor {
 			} else {
 				Request
 				.Post(mURL)
+				.addHeader("Content-Type", "application/json")
+				.addHeader("Authorization", "key="+mApiKey)
 //				.bodyForm(Form.form().add("data", mGson.toJson(temp)).build())
 				.bodyString(mGson.toJson(temp), ContentType.APPLICATION_JSON)
 				.execute();
@@ -199,12 +204,13 @@ public class GcmPlugin implements Plugin, PacketInterceptor {
 	}
 
 
-	String mURL, mMode;
+	String mURL, mMode, mApiKey;
 	boolean mDebug = false;
 	
 	private void initConf() {
 		mURL = this.getURL();
 		mMode = this.getMode();
+		mApiKey = this.getAPiKey();
 		if (this.getDebug()) {
 			mDebug = true;
 		} else {
@@ -212,6 +218,15 @@ public class GcmPlugin implements Plugin, PacketInterceptor {
 		}
 	}
 
+	public void setApiKey(String apiKey) {
+		JiveGlobals.setProperty(API_KEY, apiKey);
+		initConf();
+	}
+	
+	public String getAPiKey() {
+		return JiveGlobals.getProperty(API_KEY, null);
+	}
+	
 	public void setURL(String pURL) {
 		JiveGlobals.setProperty(URL, pURL);
 		initConf();

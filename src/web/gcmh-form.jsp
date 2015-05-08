@@ -14,6 +14,7 @@
 	boolean gcmhDebug = ParamUtils.getBooleanParameter(request, "gcmhDebug", false);
 	boolean gcmhMode = ParamUtils.getBooleanParameter(request, "gcmhMode", false);
 	String gcmhURL = ParamUtils.getParameter(request, "gcmhURL");
+	String gcmhApiKey = ParamUtils.getParameter(request, "gcmhApiKey");
     
 	GcmPlugin plugin = (GcmPlugin) XMPPServer.getInstance().getPluginManager().getPlugin("gcmh");
 
@@ -22,10 +23,14 @@
 	  if (gcmhURL == null || gcmhURL.trim().length() < 1) {
 	     errors.put("missinggcmhURL", "missinggcmhURL");
 	  }
+	  if (gcmhApiKey == null || gcmhApiKey.trim().length() < 1) {
+         errors.put("missinggcmhApiKey", "missinggcmhApiKey");
+      }
               
 	  if (errors.size() == 0) {
 	     //plugin.setEnabled(gcmhDebug);
 	     plugin.setURL(gcmhURL);
+	     plugin.setApiKey(gcmhApiKey);
          plugin.setDebug(gcmhDebug);
          if(gcmhMode){
         	 plugin.setMode(GcmPlugin.MODE_OFFLINE);
@@ -41,6 +46,7 @@
 	//gcmhDebug = plugin.isEnabled();
 	gcmhURL = plugin.getURL();
 	gcmhDebug = plugin.getDebug();
+	gcmhApiKey = plugin.getApiKey();
 	if(plugin.getMode().equals(GcmPlugin.MODE_ALL)){
 		gcmhMode = false;
 	} else {
@@ -88,6 +94,13 @@
 	        <span class="jive-error-text"><fmt:message key="gcmh.url.missing" /></span>
 	     <% } %> 
 	  </tr>
+	  <tr>
+          <td width="5%" valign="top"><fmt:message key="gcmh.apikey" />:&nbsp;</td>
+          <td width="95%"><input type="text" name="gcmhApiKey" value="<%= gcmhApiKey %>"></td>
+          <% if (errors.containsKey("missinggcmhApiKey")) { %>
+            <span class="jive-error-text"><fmt:message key="gcmh.apikey.missing" /></span>
+          <% } %> 
+      </tr>
 	  <tr>
 	     <td width="1%" align="center" nowrap><input type="checkbox" name="gcmhMode" <%=gcmhMode ? "checked" : "" %>></td>
 	     <td width="99%" align="left"><fmt:message key="gcmh.mode" /></td>
